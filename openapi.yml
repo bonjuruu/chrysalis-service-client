@@ -1,0 +1,322 @@
+openapi: 3.0.0
+
+info:
+  title: Chrysalis Service API
+  version: 1.0.0
+
+paths:
+  # health check
+  "/chrysalis/health-check":
+    get:
+      operationId: CheckHealth
+      description: Check service health.
+      responses:
+        200:
+          description: Status OK.
+        503:
+          description: Service unavailable.
+      tags:
+        - health-check
+
+  # post
+  "/chrysalis/post":
+    post:
+      operationId: CreatePost
+      description: Create a new post.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ICreatePostRequestDTO"
+      responses:
+        201:
+          description: Post created.
+        400:
+          description: Invalid request.
+      tags:
+        - post
+  "/chrysalis/post/{id}":
+    get:
+      operationId: GetPostByID
+      description: Get post by id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Post id.
+      responses:
+        200:
+          description: Post found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IPostDTO"
+        404:
+          description: Post not found.
+      tags:
+        - post
+    patch:
+      operationId: UpdatePostByID
+      description: Update post by id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Post id.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IUpdatePostRequestDTO"
+      responses:
+        200:
+          description: Post updated.
+        400:
+          description: Invalid request.
+        404:
+          description: Post not found.
+      tags:
+        - post
+    delete:
+      operationId: DeletePostByID
+      description: Delete post by id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Post id.
+      responses:
+        204:
+          description: Post deleted.
+        404:
+          description: Post not found.
+      tags:
+        - post
+  
+  # user
+  "/chrysalis/user":
+    post:
+      operationId: CreateUser
+      description: Create a new user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ICreateUserRequestDTO"
+      responses:
+        201:
+          description: User created.
+        400:
+          description: Invalid request.
+      tags:
+        - user
+  "/chrysalis/user/{id}":
+    get:
+      operationId: GetUser
+      description: Get user by id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User id.
+      responses:
+        200:
+          description: User found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IUserDTO"
+        404:
+          description: User not found.
+      tags:
+        - user
+    delete:
+      operationId: DeleteUserByID
+      description: Delete user by id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User id.
+      responses:
+        204:
+          description: User deleted.
+        404:
+          description: User not found.
+      tags:
+        - user
+  "/chrysalis/user/{id}/username":
+    patch:
+      operationId: UpdateUsernameByID
+      description: Update username by id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User id.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IUpdateUsernameRequestDTO"
+      responses:
+        200:
+          description: User updated.
+        400:
+          description: Invalid request.
+        404:
+          description: User not found.
+      tags:
+        - user
+  "/chrysalis/user/email/{email}":
+    get:
+      operationId: GetUserByEmail
+      description: Get user by email.
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User email.
+      responses:
+        200:
+          description: User found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IUserDTO"
+        404:
+          description: User not found.
+      tags:
+        - user
+  
+components:
+  schemas:
+    # enums
+    IUserRoleEnum:
+      type: string
+      enum: ["ADMIN", "DEFAULT"]
+      description: User role.
+
+    # domain
+    IPostDTO:
+      type: object
+      required: ["id", "author", "title", "content", "thumbnail", "createdAt", "updatedAt"]
+      properties:
+        id:
+          type: string
+          description: Post id.
+        author:
+          type: string
+          description: Name of the author.
+        title:
+          type: string
+          description: Title of the post.
+        content:
+          type: string
+          description: Content of the post.
+        thumbnail:
+          type: string
+          description: URL of the post thumbnail.
+        createdAt:
+          type: string
+          description: Post creation date.
+        updatedAt:
+          type: string
+          description: Post update date.
+
+    IUserDTO:
+      type: object
+      required: ["id", "username", "email", "role", "createdAt"]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: User id.
+        username:
+          type: string
+          description: User name.
+        email:
+          type: string
+          format: email
+          description: User email.
+        role:
+          $ref: "#/components/schemas/IUserRoleEnum"
+          description: User role.
+        createdAt:
+          type: string
+          format: date-time
+          description: User creation date.
+  
+    # request
+    ICreatePostRequestDTO:
+      type: object
+      required: ["author", "title", "content", "thumbnail", "createdAt", "updatedAt"]
+      properties:
+        author:
+          type: string
+          description: Name of the author.  
+        title:
+          type: string
+          description: Title of the post.
+        content:
+          type: string
+          description: Content of the post.
+        thumbnail:
+          type: string
+          description: URL of the post thumbnail.
+        createdAt:
+          type: string
+          description: Post creation date.
+        updatedAt:
+          type: string
+          description: Post update date.
+    IUpdatePostRequestDTO:
+      type: object
+      required: ["author", "title", "content", "thumbnail", "updatedAt"]
+      properties:
+        title:
+          type: string
+          description: Title of the post.
+        content:
+          type: string
+          description: Content of the post.
+        thumbnail:
+          type: string
+          description: URL of the post thumbnail.
+
+    ICreateUserRequestDTO:
+      type: object
+      required: ["username", "email"]
+      properties:
+        username:
+          type: string
+          description: User name.
+        email:
+          type: string
+          format: email
+          description: User email.
+    IUpdateUsernameRequestDTO:
+      type: object
+      required: ["username"]
+      properties:
+        username:
+          type: string
+          description: User name.
