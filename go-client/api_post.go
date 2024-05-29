@@ -316,3 +316,106 @@ func (a *PostAPIService) GetPostByIDExecute(r ApiGetPostByIDRequest) (*IPostDTO,
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiUpdatePostByIDRequest struct {
+	ctx context.Context
+	ApiService *PostAPIService
+	id string
+	iUpdatePostRequestDTO *IUpdatePostRequestDTO
+}
+
+func (r ApiUpdatePostByIDRequest) IUpdatePostRequestDTO(iUpdatePostRequestDTO IUpdatePostRequestDTO) ApiUpdatePostByIDRequest {
+	r.iUpdatePostRequestDTO = &iUpdatePostRequestDTO
+	return r
+}
+
+func (r ApiUpdatePostByIDRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UpdatePostByIDExecute(r)
+}
+
+/*
+UpdatePostByID Method for UpdatePostByID
+
+Update post by id.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Post id.
+ @return ApiUpdatePostByIDRequest
+*/
+func (a *PostAPIService) UpdatePostByID(ctx context.Context, id string) ApiUpdatePostByIDRequest {
+	return ApiUpdatePostByIDRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *PostAPIService) UpdatePostByIDExecute(r ApiUpdatePostByIDRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PostAPIService.UpdatePostByID")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/chrysalis/post/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.iUpdatePostRequestDTO == nil {
+		return nil, reportError("iUpdatePostRequestDTO is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.iUpdatePostRequestDTO
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}

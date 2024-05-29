@@ -3,13 +3,11 @@
 .travis.yml
 README.md
 api/openapi.yaml
-api_default.go
 api_health_check.go
 api_post.go
 api_user.go
 client.go
 configuration.go
-docs/DefaultAPI.md
 docs/HealthCheckAPI.md
 docs/ICreatePostRequestDTO.md
 docs/ICreateUserRequestDTO.md
@@ -31,7 +29,6 @@ model_i_update_username_request_dto.go
 model_i_user_dto.go
 model_i_user_role_enum.go
 response.go
-test/api_default_test.go
 test/api_health_check_test.go
 test/api_post_test.go
 test/api_user_test.go

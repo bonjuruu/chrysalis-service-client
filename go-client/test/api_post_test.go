@@ -61,4 +61,17 @@ func Test_openapi_PostAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PostAPIService UpdatePostByID", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.PostAPI.UpdatePostByID(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }
