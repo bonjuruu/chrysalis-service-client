@@ -1,0 +1,14 @@
+{
+  "name": "chrysalis-service-client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "github.com/bonjuruu/chrysalis-service-client",
+  "author": "bonjuruu",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "axios": "^1.7.2"
+  }
+}
