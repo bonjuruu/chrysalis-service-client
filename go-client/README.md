@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import openapi "github.com/GIT_USER_ID/GIT_REPO_ID"
+import openapi "github.com/bonjuruu/chrysalis-service-client"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -78,11 +78,11 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultAPI* | [**UpdatePostByID**](docs/DefaultAPI.md#updatepostbyid) | **Patch** /chrysalis/post/{id} | 
 *HealthCheckAPI* | [**CheckHealth**](docs/HealthCheckAPI.md#checkhealth) | **Get** /chrysalis/health-check | 
 *PostAPI* | [**CreatePost**](docs/PostAPI.md#createpost) | **Post** /chrysalis/post | 
 *PostAPI* | [**DeletePostByID**](docs/PostAPI.md#deletepostbyid) | **Delete** /chrysalis/post/{id} | 
 *PostAPI* | [**GetPostByID**](docs/PostAPI.md#getpostbyid) | **Get** /chrysalis/post/{id} | 
+*PostAPI* | [**UpdatePostByID**](docs/PostAPI.md#updatepostbyid) | **Patch** /chrysalis/post/{id} | 
 *UserAPI* | [**CreateUser**](docs/UserAPI.md#createuser) | **Post** /chrysalis/user | 
 *UserAPI* | [**DeleteUserByID**](docs/UserAPI.md#deleteuserbyid) | **Delete** /chrysalis/user/{id} | 
 *UserAPI* | [**GetUser**](docs/UserAPI.md#getuser) | **Get** /chrysalis/user/{id} | 

@@ -101,6 +101,8 @@ paths:
           description: Invalid request.
         "404":
           description: Post not found.
+      tags:
+      - post
   /chrysalis/user:
     post:
       description: Create a new user.
