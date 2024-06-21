@@ -212,13 +212,15 @@ components:
     # enums
     IUserRoleEnum:
       type: string
-      enum: ["ADMIN", "DEFAULT"]
+      enum:
+        - ADMIN
+        - DEFAULT
       description: User role.
 
     # domain
     IPostDTO:
       type: object
-      required: ["id", "author", "title", "content", "thumbnail", "createdAt", "updatedAt"]
+      required: [id, author, title, content, thumbnail, createdAt, updatedAt]
       properties:
         id:
           type: string
@@ -244,7 +246,7 @@ components:
 
     IUserDTO:
       type: object
-      required: ["id", "username", "email", "role", "createdAt"]
+      required: [id, username, email, role, createdAt]
       properties:
         id:
           type: string
@@ -268,7 +270,7 @@ components:
     # request
     ICreatePostRequestDTO:
       type: object
-      required: ["author", "title", "content", "thumbnail", "createdAt", "updatedAt"]
+      required: [author, title, content, thumbnail, createdAt, updatedAt]
       properties:
         author:
           type: string
@@ -290,7 +292,7 @@ components:
           description: Post update date.
     IUpdatePostRequestDTO:
       type: object
-      required: ["author", "title", "content", "thumbnail", "updatedAt"]
+      required: [author, title, content, thumbnail, updatedAt]
       properties:
         title:
           type: string
@@ -304,7 +306,7 @@ components:
 
     ICreateUserRequestDTO:
       type: object
-      required: ["username", "email"]
+      required: [username, email]
       properties:
         username:
           type: string
@@ -315,7 +317,7 @@ components:
           description: User email.
     IUpdateUsernameRequestDTO:
       type: object
-      required: ["username"]
+      required: [username]
       properties:
         username:
           type: string
