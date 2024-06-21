@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -29,7 +28,4 @@ model_i_update_username_request_dto.go
 model_i_user_dto.go
 model_i_user_role_enum.go
 response.go
-test/api_health_check_test.go
-test/api_post_test.go
-test/api_user_test.go
 utils.go
