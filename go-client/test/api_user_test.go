@@ -13,7 +13,7 @@ import (
 	"context"
 	"testing"
 
-	openapiclient "github.com/bonjuruu/chrysalis-service-client"
+	openapiclient "github.com/bonjuruu/chrysalis-service-client/go-client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
