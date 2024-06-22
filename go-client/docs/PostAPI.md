@@ -28,7 +28,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bonjuruu/chrysalis-service-client"
+	openapiclient "github.com/bonjuruu/chrysalis-service-client/go-client"
 )
 
 func main() {
@@ -92,7 +92,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bonjuruu/chrysalis-service-client"
+	openapiclient "github.com/bonjuruu/chrysalis-service-client/go-client"
 )
 
 func main() {
@@ -160,7 +160,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bonjuruu/chrysalis-service-client"
+	openapiclient "github.com/bonjuruu/chrysalis-service-client/go-client"
 )
 
 func main() {
@@ -230,7 +230,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bonjuruu/chrysalis-service-client"
+	openapiclient "github.com/bonjuruu/chrysalis-service-client/go-client"
 )
 
 func main() {
