@@ -23,10 +23,14 @@ var _ MappedNullable = &IUpdatePostRequestDTO{}
 type IUpdatePostRequestDTO struct {
 	// Title of the post.
 	Title string `json:"title"`
+	// Summary of the post.
+	Summary string `json:"summary"`
 	// Content of the post.
 	Content string `json:"content"`
 	// URL of the post thumbnail.
 	Thumbnail string `json:"thumbnail"`
+	// Post update date.
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _IUpdatePostRequestDTO IUpdatePostRequestDTO
@@ -35,11 +39,13 @@ type _IUpdatePostRequestDTO IUpdatePostRequestDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIUpdatePostRequestDTO(title string, content string, thumbnail string) *IUpdatePostRequestDTO {
+func NewIUpdatePostRequestDTO(title string, summary string, content string, thumbnail string, updatedAt string) *IUpdatePostRequestDTO {
 	this := IUpdatePostRequestDTO{}
 	this.Title = title
+	this.Summary = summary
 	this.Content = content
 	this.Thumbnail = thumbnail
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -73,6 +79,30 @@ func (o *IUpdatePostRequestDTO) GetTitleOk() (*string, bool) {
 // SetTitle sets field value
 func (o *IUpdatePostRequestDTO) SetTitle(v string) {
 	o.Title = v
+}
+
+// GetSummary returns the Summary field value
+func (o *IUpdatePostRequestDTO) GetSummary() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Summary
+}
+
+// GetSummaryOk returns a tuple with the Summary field value
+// and a boolean to check if the value has been set.
+func (o *IUpdatePostRequestDTO) GetSummaryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Summary, true
+}
+
+// SetSummary sets field value
+func (o *IUpdatePostRequestDTO) SetSummary(v string) {
+	o.Summary = v
 }
 
 // GetContent returns the Content field value
@@ -123,6 +153,30 @@ func (o *IUpdatePostRequestDTO) SetThumbnail(v string) {
 	o.Thumbnail = v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *IUpdatePostRequestDTO) GetUpdatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *IUpdatePostRequestDTO) GetUpdatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *IUpdatePostRequestDTO) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
+}
+
 func (o IUpdatePostRequestDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -134,8 +188,10 @@ func (o IUpdatePostRequestDTO) MarshalJSON() ([]byte, error) {
 func (o IUpdatePostRequestDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["title"] = o.Title
+	toSerialize["summary"] = o.Summary
 	toSerialize["content"] = o.Content
 	toSerialize["thumbnail"] = o.Thumbnail
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -145,8 +201,10 @@ func (o *IUpdatePostRequestDTO) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"title",
+		"summary",
 		"content",
 		"thumbnail",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

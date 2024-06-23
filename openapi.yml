@@ -297,17 +297,23 @@ components:
           description: Post update date.
     IUpdatePostRequestDTO:
       type: object
-      required: [author, title, summary, content, thumbnail, updatedAt]
+      required: [title, summary, content, thumbnail, updatedAt]
       properties:
         title:
           type: string
           description: Title of the post.
+        summary:
+          type: string
+          description: Summary of the post.
         content:
           type: string
           description: Content of the post.
         thumbnail:
           type: string
           description: URL of the post thumbnail.
+        updatedAt:
+          type: string
+          description: Post update date.
 
     ICreateUserRequestDTO:
       type: object
