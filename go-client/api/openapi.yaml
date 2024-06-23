@@ -341,12 +341,17 @@ components:
       type: object
     IUpdatePostRequestDTO:
       example:
+        summary: summary
         thumbnail: thumbnail
         title: title
         content: content
+        updatedAt: updatedAt
       properties:
         title:
           description: Title of the post.
+          type: string
+        summary:
+          description: Summary of the post.
           type: string
         content:
           description: Content of the post.
@@ -354,8 +359,10 @@ components:
         thumbnail:
           description: URL of the post thumbnail.
           type: string
+        updatedAt:
+          description: Post update date.
+          type: string
       required:
-      - author
       - content
       - summary
       - thumbnail

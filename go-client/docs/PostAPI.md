@@ -235,7 +235,7 @@ import (
 
 func main() {
 	id := "id_example" // string | Post id.
-	iUpdatePostRequestDTO := *openapiclient.NewIUpdatePostRequestDTO("Title_example", "Content_example", "Thumbnail_example") // IUpdatePostRequestDTO | 
+	iUpdatePostRequestDTO := *openapiclient.NewIUpdatePostRequestDTO("Title_example", "Summary_example", "Content_example", "Thumbnail_example", "UpdatedAt_example") // IUpdatePostRequestDTO | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

@@ -159,6 +159,12 @@ export interface IUpdatePostRequestDTO {
      */
     'title': string;
     /**
+     * Summary of the post.
+     * @type {string}
+     * @memberof IUpdatePostRequestDTO
+     */
+    'summary': string;
+    /**
      * Content of the post.
      * @type {string}
      * @memberof IUpdatePostRequestDTO
@@ -170,6 +176,12 @@ export interface IUpdatePostRequestDTO {
      * @memberof IUpdatePostRequestDTO
      */
     'thumbnail': string;
+    /**
+     * Post update date.
+     * @type {string}
+     * @memberof IUpdatePostRequestDTO
+     */
+    'updatedAt': string;
 }
 /**
  * 
