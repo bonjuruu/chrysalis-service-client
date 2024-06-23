@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | Post id. | 
 **Author** | **string** | Name of the author. | 
 **Title** | **string** | Title of the post. | 
+**Summary** | **string** | Summary of the post. | 
 **Content** | **string** | Content of the post. | 
 **Thumbnail** | **string** | URL of the post thumbnail. | 
 **CreatedAt** | **string** | Post creation date. | 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewIPostDTO
 
-`func NewIPostDTO(id string, author string, title string, content string, thumbnail string, createdAt string, updatedAt string, ) *IPostDTO`
+`func NewIPostDTO(id string, author string, title string, summary string, content string, thumbnail string, createdAt string, updatedAt string, ) *IPostDTO`
 
 NewIPostDTO instantiates a new IPostDTO object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +90,26 @@ and a boolean to check if the value has been set.
 `func (o *IPostDTO) SetTitle(v string)`
 
 SetTitle sets Title field to given value.
+
+
+### GetSummary
+
+`func (o *IPostDTO) GetSummary() string`
+
+GetSummary returns the Summary field if non-nil, zero value otherwise.
+
+### GetSummaryOk
+
+`func (o *IPostDTO) GetSummaryOk() (*string, bool)`
+
+GetSummaryOk returns a tuple with the Summary field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSummary
+
+`func (o *IPostDTO) SetSummary(v string)`
+
+SetSummary sets Summary field to given value.
 
 
 ### GetContent

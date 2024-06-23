@@ -225,6 +225,7 @@ components:
       type: string
     IPostDTO:
       example:
+        summary: summary
         createdAt: createdAt
         thumbnail: thumbnail
         author: author
@@ -241,6 +242,9 @@ components:
           type: string
         title:
           description: Title of the post.
+          type: string
+        summary:
+          description: Summary of the post.
           type: string
         content:
           description: Content of the post.
@@ -259,13 +263,14 @@ components:
       - content
       - createdAt
       - id
+      - summary
       - thumbnail
       - title
       - updatedAt
       type: object
     IUserDTO:
       example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
+        createdAt: createdAt
         role: ADMIN
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         email: email
@@ -286,7 +291,6 @@ components:
           $ref: '#/components/schemas/IUserRoleEnum'
         createdAt:
           description: User creation date.
-          format: date-time
           type: string
       required:
       - createdAt
@@ -297,6 +301,7 @@ components:
       type: object
     ICreatePostRequestDTO:
       example:
+        summary: summary
         createdAt: createdAt
         thumbnail: thumbnail
         author: author
@@ -309,6 +314,9 @@ components:
           type: string
         title:
           description: Title of the post.
+          type: string
+        summary:
+          description: Summary of the post.
           type: string
         content:
           description: Content of the post.
@@ -326,6 +334,7 @@ components:
       - author
       - content
       - createdAt
+      - summary
       - thumbnail
       - title
       - updatedAt
@@ -348,6 +357,7 @@ components:
       required:
       - author
       - content
+      - summary
       - thumbnail
       - title
       - updatedAt

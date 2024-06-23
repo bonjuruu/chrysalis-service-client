@@ -27,6 +27,8 @@ type IPostDTO struct {
 	Author string `json:"author"`
 	// Title of the post.
 	Title string `json:"title"`
+	// Summary of the post.
+	Summary string `json:"summary"`
 	// Content of the post.
 	Content string `json:"content"`
 	// URL of the post thumbnail.
@@ -43,11 +45,12 @@ type _IPostDTO IPostDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIPostDTO(id string, author string, title string, content string, thumbnail string, createdAt string, updatedAt string) *IPostDTO {
+func NewIPostDTO(id string, author string, title string, summary string, content string, thumbnail string, createdAt string, updatedAt string) *IPostDTO {
 	this := IPostDTO{}
 	this.Id = id
 	this.Author = author
 	this.Title = title
+	this.Summary = summary
 	this.Content = content
 	this.Thumbnail = thumbnail
 	this.CreatedAt = createdAt
@@ -133,6 +136,30 @@ func (o *IPostDTO) GetTitleOk() (*string, bool) {
 // SetTitle sets field value
 func (o *IPostDTO) SetTitle(v string) {
 	o.Title = v
+}
+
+// GetSummary returns the Summary field value
+func (o *IPostDTO) GetSummary() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Summary
+}
+
+// GetSummaryOk returns a tuple with the Summary field value
+// and a boolean to check if the value has been set.
+func (o *IPostDTO) GetSummaryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Summary, true
+}
+
+// SetSummary sets field value
+func (o *IPostDTO) SetSummary(v string) {
+	o.Summary = v
 }
 
 // GetContent returns the Content field value
@@ -244,6 +271,7 @@ func (o IPostDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["author"] = o.Author
 	toSerialize["title"] = o.Title
+	toSerialize["summary"] = o.Summary
 	toSerialize["content"] = o.Content
 	toSerialize["thumbnail"] = o.Thumbnail
 	toSerialize["createdAt"] = o.CreatedAt
@@ -259,6 +287,7 @@ func (o *IPostDTO) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"author",
 		"title",
+		"summary",
 		"content",
 		"thumbnail",
 		"createdAt",

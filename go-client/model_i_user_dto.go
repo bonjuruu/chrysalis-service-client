@@ -12,7 +12,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"time"
 	"bytes"
 	"fmt"
 )
@@ -30,7 +29,7 @@ type IUserDTO struct {
 	Email string `json:"email"`
 	Role IUserRoleEnum `json:"role"`
 	// User creation date.
-	CreatedAt time.Time `json:"createdAt"`
+	CreatedAt string `json:"createdAt"`
 }
 
 type _IUserDTO IUserDTO
@@ -39,7 +38,7 @@ type _IUserDTO IUserDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIUserDTO(id string, username string, email string, role IUserRoleEnum, createdAt time.Time) *IUserDTO {
+func NewIUserDTO(id string, username string, email string, role IUserRoleEnum, createdAt string) *IUserDTO {
 	this := IUserDTO{}
 	this.Id = id
 	this.Username = username
@@ -154,9 +153,9 @@ func (o *IUserDTO) SetRole(v IUserRoleEnum) {
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *IUserDTO) GetCreatedAt() time.Time {
+func (o *IUserDTO) GetCreatedAt() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
@@ -165,7 +164,7 @@ func (o *IUserDTO) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *IUserDTO) GetCreatedAtOk() (*time.Time, bool) {
+func (o *IUserDTO) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -173,7 +172,7 @@ func (o *IUserDTO) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *IUserDTO) SetCreatedAt(v time.Time) {
+func (o *IUserDTO) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
