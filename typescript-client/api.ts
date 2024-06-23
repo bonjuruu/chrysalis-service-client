@@ -42,6 +42,12 @@ export interface ICreatePostRequestDTO {
      */
     'title': string;
     /**
+     * Summary of the post.
+     * @type {string}
+     * @memberof ICreatePostRequestDTO
+     */
+    'summary': string;
+    /**
      * Content of the post.
      * @type {string}
      * @memberof ICreatePostRequestDTO
@@ -109,6 +115,12 @@ export interface IPostDTO {
      * @memberof IPostDTO
      */
     'title': string;
+    /**
+     * Summary of the post.
+     * @type {string}
+     * @memberof IPostDTO
+     */
+    'summary': string;
     /**
      * Content of the post.
      * @type {string}

@@ -220,7 +220,7 @@ components:
     # domain
     IPostDTO:
       type: object
-      required: [id, author, title, content, thumbnail, createdAt, updatedAt]
+      required: [id, author, title, summary, content, thumbnail, createdAt, updatedAt]
       properties:
         id:
           type: string
@@ -231,6 +231,9 @@ components:
         title:
           type: string
           description: Title of the post.
+        summary:
+          type: string
+          description: Summary of the post.
         content:
           type: string
           description: Content of the post.
@@ -264,13 +267,12 @@ components:
           description: User role.
         createdAt:
           type: string
-          format: date-time
           description: User creation date.
   
     # request
     ICreatePostRequestDTO:
       type: object
-      required: [author, title, content, thumbnail, createdAt, updatedAt]
+      required: [author, title, summary, content, thumbnail, createdAt, updatedAt]
       properties:
         author:
           type: string
@@ -278,6 +280,9 @@ components:
         title:
           type: string
           description: Title of the post.
+        summary:
+          type: string
+          description: Summary of the post.
         content:
           type: string
           description: Content of the post.
@@ -292,7 +297,7 @@ components:
           description: Post update date.
     IUpdatePostRequestDTO:
       type: object
-      required: [author, title, content, thumbnail, updatedAt]
+      required: [author, title, summary, content, thumbnail, updatedAt]
       properties:
         title:
           type: string

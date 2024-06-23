@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Author** | **string** | Name of the author. | 
 **Title** | **string** | Title of the post. | 
+**Summary** | **string** | Summary of the post. | 
 **Content** | **string** | Content of the post. | 
 **Thumbnail** | **string** | URL of the post thumbnail. | 
 **CreatedAt** | **string** | Post creation date. | 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewICreatePostRequestDTO
 
-`func NewICreatePostRequestDTO(author string, title string, content string, thumbnail string, createdAt string, updatedAt string, ) *ICreatePostRequestDTO`
+`func NewICreatePostRequestDTO(author string, title string, summary string, content string, thumbnail string, createdAt string, updatedAt string, ) *ICreatePostRequestDTO`
 
 NewICreatePostRequestDTO instantiates a new ICreatePostRequestDTO object
 This constructor will assign default values to properties that have it defined,
@@ -68,6 +69,26 @@ and a boolean to check if the value has been set.
 `func (o *ICreatePostRequestDTO) SetTitle(v string)`
 
 SetTitle sets Title field to given value.
+
+
+### GetSummary
+
+`func (o *ICreatePostRequestDTO) GetSummary() string`
+
+GetSummary returns the Summary field if non-nil, zero value otherwise.
+
+### GetSummaryOk
+
+`func (o *ICreatePostRequestDTO) GetSummaryOk() (*string, bool)`
+
+GetSummaryOk returns a tuple with the Summary field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSummary
+
+`func (o *ICreatePostRequestDTO) SetSummary(v string)`
+
+SetSummary sets Summary field to given value.
 
 
 ### GetContent

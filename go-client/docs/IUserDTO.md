@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Username** | **string** | User name. | 
 **Email** | **string** | User email. | 
 **Role** | [**IUserRoleEnum**](IUserRoleEnum.md) |  | 
-**CreatedAt** | **time.Time** | User creation date. | 
+**CreatedAt** | **string** | User creation date. | 
 
 ## Methods
 
 ### NewIUserDTO
 
-`func NewIUserDTO(id string, username string, email string, role IUserRoleEnum, createdAt time.Time, ) *IUserDTO`
+`func NewIUserDTO(id string, username string, email string, role IUserRoleEnum, createdAt string, ) *IUserDTO`
 
 NewIUserDTO instantiates a new IUserDTO object
 This constructor will assign default values to properties that have it defined,
@@ -111,20 +111,20 @@ SetRole sets Role field to given value.
 
 ### GetCreatedAt
 
-`func (o *IUserDTO) GetCreatedAt() time.Time`
+`func (o *IUserDTO) GetCreatedAt() string`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *IUserDTO) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *IUserDTO) GetCreatedAtOk() (*string, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *IUserDTO) SetCreatedAt(v time.Time)`
+`func (o *IUserDTO) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
 

@@ -25,6 +25,8 @@ type ICreatePostRequestDTO struct {
 	Author string `json:"author"`
 	// Title of the post.
 	Title string `json:"title"`
+	// Summary of the post.
+	Summary string `json:"summary"`
 	// Content of the post.
 	Content string `json:"content"`
 	// URL of the post thumbnail.
@@ -41,10 +43,11 @@ type _ICreatePostRequestDTO ICreatePostRequestDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewICreatePostRequestDTO(author string, title string, content string, thumbnail string, createdAt string, updatedAt string) *ICreatePostRequestDTO {
+func NewICreatePostRequestDTO(author string, title string, summary string, content string, thumbnail string, createdAt string, updatedAt string) *ICreatePostRequestDTO {
 	this := ICreatePostRequestDTO{}
 	this.Author = author
 	this.Title = title
+	this.Summary = summary
 	this.Content = content
 	this.Thumbnail = thumbnail
 	this.CreatedAt = createdAt
@@ -106,6 +109,30 @@ func (o *ICreatePostRequestDTO) GetTitleOk() (*string, bool) {
 // SetTitle sets field value
 func (o *ICreatePostRequestDTO) SetTitle(v string) {
 	o.Title = v
+}
+
+// GetSummary returns the Summary field value
+func (o *ICreatePostRequestDTO) GetSummary() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Summary
+}
+
+// GetSummaryOk returns a tuple with the Summary field value
+// and a boolean to check if the value has been set.
+func (o *ICreatePostRequestDTO) GetSummaryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Summary, true
+}
+
+// SetSummary sets field value
+func (o *ICreatePostRequestDTO) SetSummary(v string) {
+	o.Summary = v
 }
 
 // GetContent returns the Content field value
@@ -216,6 +243,7 @@ func (o ICreatePostRequestDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["author"] = o.Author
 	toSerialize["title"] = o.Title
+	toSerialize["summary"] = o.Summary
 	toSerialize["content"] = o.Content
 	toSerialize["thumbnail"] = o.Thumbnail
 	toSerialize["createdAt"] = o.CreatedAt
@@ -230,6 +258,7 @@ func (o *ICreatePostRequestDTO) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"author",
 		"title",
+		"summary",
 		"content",
 		"thumbnail",
 		"createdAt",
