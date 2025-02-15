@@ -302,12 +302,10 @@ components:
     ICreatePostRequestDTO:
       example:
         summary: summary
-        createdAt: createdAt
         thumbnail: thumbnail
         author: author
         title: title
         content: content
-        updatedAt: updatedAt
       properties:
         author:
           description: Name of the author.
@@ -324,20 +322,12 @@ components:
         thumbnail:
           description: URL of the post thumbnail.
           type: string
-        createdAt:
-          description: Post creation date.
-          type: string
-        updatedAt:
-          description: Post update date.
-          type: string
       required:
       - author
       - content
-      - createdAt
       - summary
       - thumbnail
       - title
-      - updatedAt
       type: object
     IUpdatePostRequestDTO:
       example:
@@ -345,7 +335,6 @@ components:
         thumbnail: thumbnail
         title: title
         content: content
-        updatedAt: updatedAt
       properties:
         title:
           description: Title of the post.
@@ -359,15 +348,11 @@ components:
         thumbnail:
           description: URL of the post thumbnail.
           type: string
-        updatedAt:
-          description: Post update date.
-          type: string
       required:
       - content
       - summary
       - thumbnail
       - title
-      - updatedAt
       type: object
     ICreateUserRequestDTO:
       example:
