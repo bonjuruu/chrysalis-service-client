@@ -21,12 +21,13 @@ jobs:
         id: read-version
         run: |
           VERSION=$(cat semver.version)
-          echo "BASE_VERSION=$VERSION" >> $GITHUB_ENV
+          BASE_VERSION=$(echo "$VERSION" | sed 's/\.[0-9]*$//')
+          echo "BASE_VERSION=$BASE_VERSION" >> $GITHUB_ENV
 
       - name: Get latest patch number
         id: get-latest-tag
         run: |
-          LATEST_TAG=$(git tag -l "v${{ env.BASE_VERSION }}.*" --sort=-v:version:refname | head -n1 || echo "v${{ env.BASE_VERSION }}.0")
+          LATEST_TAG=$(git tag -l "v${{ env.BASE_VERSION }}.*" | sort -V | tail -n1 || echo "v${{ env.BASE_VERSION }}.1")
           PATCH_NUM=$(echo "$LATEST_TAG" | grep -oE "[0-9]+$" || echo "0")
           NEW_PATCH=$((PATCH_NUM + 1))
           NEW_TAG="v${{ env.BASE_VERSION }}.$NEW_PATCH"
