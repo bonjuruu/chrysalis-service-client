@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-	iCreatePostRequestDTO := *openapiclient.NewICreatePostRequestDTO("Author_example", "Title_example", "Summary_example", "Content_example", "Thumbnail_example", "CreatedAt_example", "UpdatedAt_example") // ICreatePostRequestDTO | 
+	iCreatePostRequestDTO := *openapiclient.NewICreatePostRequestDTO("Author_example", "Title_example", "Summary_example", "Content_example", "Thumbnail_example") // ICreatePostRequestDTO | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -235,7 +235,7 @@ import (
 
 func main() {
 	id := "id_example" // string | Post id.
-	iUpdatePostRequestDTO := *openapiclient.NewIUpdatePostRequestDTO("Title_example", "Summary_example", "Content_example", "Thumbnail_example", "UpdatedAt_example") // IUpdatePostRequestDTO | 
+	iUpdatePostRequestDTO := *openapiclient.NewIUpdatePostRequestDTO("Title_example", "Summary_example", "Content_example", "Thumbnail_example") // IUpdatePostRequestDTO | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

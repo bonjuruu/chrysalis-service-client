@@ -9,14 +9,12 @@ Name | Type | Description | Notes
 **Summary** | **string** | Summary of the post. | 
 **Content** | **string** | Content of the post. | 
 **Thumbnail** | **string** | URL of the post thumbnail. | 
-**CreatedAt** | **string** | Post creation date. | 
-**UpdatedAt** | **string** | Post update date. | 
 
 ## Methods
 
 ### NewICreatePostRequestDTO
 
-`func NewICreatePostRequestDTO(author string, title string, summary string, content string, thumbnail string, createdAt string, updatedAt string, ) *ICreatePostRequestDTO`
+`func NewICreatePostRequestDTO(author string, title string, summary string, content string, thumbnail string, ) *ICreatePostRequestDTO`
 
 NewICreatePostRequestDTO instantiates a new ICreatePostRequestDTO object
 This constructor will assign default values to properties that have it defined,
@@ -129,46 +127,6 @@ and a boolean to check if the value has been set.
 `func (o *ICreatePostRequestDTO) SetThumbnail(v string)`
 
 SetThumbnail sets Thumbnail field to given value.
-
-
-### GetCreatedAt
-
-`func (o *ICreatePostRequestDTO) GetCreatedAt() string`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *ICreatePostRequestDTO) GetCreatedAtOk() (*string, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *ICreatePostRequestDTO) SetCreatedAt(v string)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-
-### GetUpdatedAt
-
-`func (o *ICreatePostRequestDTO) GetUpdatedAt() string`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *ICreatePostRequestDTO) GetUpdatedAtOk() (*string, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *ICreatePostRequestDTO) SetUpdatedAt(v string)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
 
 
 

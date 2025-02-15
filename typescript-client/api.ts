@@ -59,18 +59,6 @@ export interface ICreatePostRequestDTO {
      * @memberof ICreatePostRequestDTO
      */
     'thumbnail': string;
-    /**
-     * Post creation date.
-     * @type {string}
-     * @memberof ICreatePostRequestDTO
-     */
-    'createdAt': string;
-    /**
-     * Post update date.
-     * @type {string}
-     * @memberof ICreatePostRequestDTO
-     */
-    'updatedAt': string;
 }
 /**
  * 
@@ -176,12 +164,6 @@ export interface IUpdatePostRequestDTO {
      * @memberof IUpdatePostRequestDTO
      */
     'thumbnail': string;
-    /**
-     * Post update date.
-     * @type {string}
-     * @memberof IUpdatePostRequestDTO
-     */
-    'updatedAt': string;
 }
 /**
  * 
@@ -321,7 +303,7 @@ export const HealthCheckApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        checkHealth(options?: any): AxiosPromise<void> {
+        checkHealth(options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.checkHealth(options).then((request) => request(axios, basePath));
         },
     };
@@ -568,7 +550,7 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPost(iCreatePostRequestDTO: ICreatePostRequestDTO, options?: any): AxiosPromise<void> {
+        createPost(iCreatePostRequestDTO: ICreatePostRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.createPost(iCreatePostRequestDTO, options).then((request) => request(axios, basePath));
         },
         /**
@@ -577,7 +559,7 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePostByID(id: string, options?: any): AxiosPromise<void> {
+        deletePostByID(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deletePostByID(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -586,7 +568,7 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPostByID(id: string, options?: any): AxiosPromise<IPostDTO> {
+        getPostByID(id: string, options?: RawAxiosRequestConfig): AxiosPromise<IPostDTO> {
             return localVarFp.getPostByID(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -596,7 +578,7 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePostByID(id: string, iUpdatePostRequestDTO: IUpdatePostRequestDTO, options?: any): AxiosPromise<void> {
+        updatePostByID(id: string, iUpdatePostRequestDTO: IUpdatePostRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.updatePostByID(id, iUpdatePostRequestDTO, options).then((request) => request(axios, basePath));
         },
     };
@@ -923,7 +905,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUser(iCreateUserRequestDTO: ICreateUserRequestDTO, options?: any): AxiosPromise<void> {
+        createUser(iCreateUserRequestDTO: ICreateUserRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.createUser(iCreateUserRequestDTO, options).then((request) => request(axios, basePath));
         },
         /**
@@ -932,7 +914,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserByID(id: string, options?: any): AxiosPromise<void> {
+        deleteUserByID(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteUserByID(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -941,7 +923,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUser(id: string, options?: any): AxiosPromise<IUserDTO> {
+        getUser(id: string, options?: RawAxiosRequestConfig): AxiosPromise<IUserDTO> {
             return localVarFp.getUser(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -950,7 +932,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserByEmail(email: string, options?: any): AxiosPromise<IUserDTO> {
+        getUserByEmail(email: string, options?: RawAxiosRequestConfig): AxiosPromise<IUserDTO> {
             return localVarFp.getUserByEmail(email, options).then((request) => request(axios, basePath));
         },
         /**
@@ -960,7 +942,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUsernameByID(id: string, iUpdateUsernameRequestDTO: IUpdateUsernameRequestDTO, options?: any): AxiosPromise<void> {
+        updateUsernameByID(id: string, iUpdateUsernameRequestDTO: IUpdateUsernameRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.updateUsernameByID(id, iUpdateUsernameRequestDTO, options).then((request) => request(axios, basePath));
         },
     };

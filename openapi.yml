@@ -272,7 +272,7 @@ components:
     # request
     ICreatePostRequestDTO:
       type: object
-      required: [author, title, summary, content, thumbnail, createdAt, updatedAt]
+      required: [author, title, summary, content, thumbnail]
       properties:
         author:
           type: string
@@ -289,15 +289,9 @@ components:
         thumbnail:
           type: string
           description: URL of the post thumbnail.
-        createdAt:
-          type: string
-          description: Post creation date.
-        updatedAt:
-          type: string
-          description: Post update date.
     IUpdatePostRequestDTO:
       type: object
-      required: [title, summary, content, thumbnail, updatedAt]
+      required: [title, summary, content, thumbnail]
       properties:
         title:
           type: string
@@ -311,9 +305,6 @@ components:
         thumbnail:
           type: string
           description: URL of the post thumbnail.
-        updatedAt:
-          type: string
-          description: Post update date.
 
     ICreateUserRequestDTO:
       type: object

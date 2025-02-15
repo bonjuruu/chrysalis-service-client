@@ -8,13 +8,12 @@ Name | Type | Description | Notes
 **Summary** | **string** | Summary of the post. | 
 **Content** | **string** | Content of the post. | 
 **Thumbnail** | **string** | URL of the post thumbnail. | 
-**UpdatedAt** | **string** | Post update date. | 
 
 ## Methods
 
 ### NewIUpdatePostRequestDTO
 
-`func NewIUpdatePostRequestDTO(title string, summary string, content string, thumbnail string, updatedAt string, ) *IUpdatePostRequestDTO`
+`func NewIUpdatePostRequestDTO(title string, summary string, content string, thumbnail string, ) *IUpdatePostRequestDTO`
 
 NewIUpdatePostRequestDTO instantiates a new IUpdatePostRequestDTO object
 This constructor will assign default values to properties that have it defined,
@@ -107,26 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *IUpdatePostRequestDTO) SetThumbnail(v string)`
 
 SetThumbnail sets Thumbnail field to given value.
-
-
-### GetUpdatedAt
-
-`func (o *IUpdatePostRequestDTO) GetUpdatedAt() string`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *IUpdatePostRequestDTO) GetUpdatedAtOk() (*string, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *IUpdatePostRequestDTO) SetUpdatedAt(v string)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
 
 
 

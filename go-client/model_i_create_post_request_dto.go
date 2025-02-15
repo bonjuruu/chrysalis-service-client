@@ -31,10 +31,6 @@ type ICreatePostRequestDTO struct {
 	Content string `json:"content"`
 	// URL of the post thumbnail.
 	Thumbnail string `json:"thumbnail"`
-	// Post creation date.
-	CreatedAt string `json:"createdAt"`
-	// Post update date.
-	UpdatedAt string `json:"updatedAt"`
 }
 
 type _ICreatePostRequestDTO ICreatePostRequestDTO
@@ -43,15 +39,13 @@ type _ICreatePostRequestDTO ICreatePostRequestDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewICreatePostRequestDTO(author string, title string, summary string, content string, thumbnail string, createdAt string, updatedAt string) *ICreatePostRequestDTO {
+func NewICreatePostRequestDTO(author string, title string, summary string, content string, thumbnail string) *ICreatePostRequestDTO {
 	this := ICreatePostRequestDTO{}
 	this.Author = author
 	this.Title = title
 	this.Summary = summary
 	this.Content = content
 	this.Thumbnail = thumbnail
-	this.CreatedAt = createdAt
-	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -183,54 +177,6 @@ func (o *ICreatePostRequestDTO) SetThumbnail(v string) {
 	o.Thumbnail = v
 }
 
-// GetCreatedAt returns the CreatedAt field value
-func (o *ICreatePostRequestDTO) GetCreatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *ICreatePostRequestDTO) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *ICreatePostRequestDTO) SetCreatedAt(v string) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value
-func (o *ICreatePostRequestDTO) GetUpdatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *ICreatePostRequestDTO) GetUpdatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UpdatedAt, true
-}
-
-// SetUpdatedAt sets field value
-func (o *ICreatePostRequestDTO) SetUpdatedAt(v string) {
-	o.UpdatedAt = v
-}
-
 func (o ICreatePostRequestDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -246,8 +192,6 @@ func (o ICreatePostRequestDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize["summary"] = o.Summary
 	toSerialize["content"] = o.Content
 	toSerialize["thumbnail"] = o.Thumbnail
-	toSerialize["createdAt"] = o.CreatedAt
-	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -261,8 +205,6 @@ func (o *ICreatePostRequestDTO) UnmarshalJSON(data []byte) (err error) {
 		"summary",
 		"content",
 		"thumbnail",
-		"createdAt",
-		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})
