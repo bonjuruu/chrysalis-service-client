@@ -1,0 +1,62 @@
+name: Auto Tag and Release on Merge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read version from semver.version
+        id: read-version
+        run: |
+          VERSION=$(cat semver.version)
+          echo "BASE_VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Get latest patch number
+        id: get-latest-tag
+        run: |
+          LATEST_TAG=$(git tag -l "v${{ env.BASE_VERSION }}.*" --sort=-v:version:refname | head -n1 || echo "v${{ env.BASE_VERSION }}.0")
+          PATCH_NUM=$(echo "$LATEST_TAG" | grep -oE "[0-9]+$" || echo "0")
+          NEW_PATCH=$((PATCH_NUM + 1))
+          NEW_TAG="v${{ env.BASE_VERSION }}.$NEW_PATCH"
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+
+      - name: Create and push tags
+        run: |
+          git tag ${{ env.NEW_TAG }}
+          git tag go-client/${{ env.NEW_TAG }}
+          git push origin ${{ env.NEW_TAG }}
+          git push origin go-client/${{ env.NEW_TAG }}
+
+      - name: Create GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.NEW_TAG }}
+          name: Release ${{ env.NEW_TAG }}
+          body: |
+            ## Changes in ${{ env.NEW_TAG }}
+            - Auto-generated release after merge to main
+          draft: false
+          prerelease: false
+
+      - name: Create GitHub Releases for Go Client
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: go-client/${{ env.NEW_TAG }}
+          name: Go Client Release ${{ env.NEW_TAG }}
+          body: |
+            ## Changes in Go Client ${{ env.NEW_TAG }}
+            - Auto-generated release for Go client
+          draft: false
+          prerelease: false
