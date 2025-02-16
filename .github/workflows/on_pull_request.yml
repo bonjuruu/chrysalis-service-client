@@ -14,7 +14,7 @@ jobs:
 
       - name: Run your specific command
         run: |
-          make generate-openapi
+          make generate_clients
 
       - name: Check for file changes
         run: |
