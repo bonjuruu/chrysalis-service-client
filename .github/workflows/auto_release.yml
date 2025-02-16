@@ -39,25 +39,3 @@ jobs:
           git tag go-client/${{ env.NEW_TAG }}
           git push origin ${{ env.NEW_TAG }}
           git push origin go-client/${{ env.NEW_TAG }}
-
-      - name: Create GitHub Releases
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ env.NEW_TAG }}
-          name: Release ${{ env.NEW_TAG }}
-          body: |
-            ## Changes in ${{ env.NEW_TAG }}
-            - Auto-generated release after merge to main
-          draft: false
-          prerelease: false
-
-      - name: Create GitHub Releases for Go Client
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: go-client/${{ env.NEW_TAG }}
-          name: Go Client Release ${{ env.NEW_TAG }}
-          body: |
-            ## Changes in Go Client ${{ env.NEW_TAG }}
-            - Auto-generated release for Go client
-          draft: false
-          prerelease: false
