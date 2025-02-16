@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreatePost
 
-> CreatePost(ctx).ICreatePostRequestDTO(iCreatePostRequestDTO).Execute()
+> IPostDTO CreatePost(ctx).ICreatePostRequestDTO(iCreatePostRequestDTO).Execute()
 
 
 
@@ -36,11 +36,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PostAPI.CreatePost(context.Background()).ICreatePostRequestDTO(iCreatePostRequestDTO).Execute()
+	resp, r, err := apiClient.PostAPI.CreatePost(context.Background()).ICreatePostRequestDTO(iCreatePostRequestDTO).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PostAPI.CreatePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `CreatePost`: IPostDTO
+	fmt.Fprintf(os.Stdout, "Response from `PostAPI.CreatePost`: %v\n", resp)
 }
 ```
 
@@ -59,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**IPostDTO**](IPostDTO.md)
 
 ### Authorization
 
@@ -68,7 +70,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -215,7 +217,7 @@ No authorization required
 
 ## UpdatePostByID
 
-> UpdatePostByID(ctx, id).IUpdatePostRequestDTO(iUpdatePostRequestDTO).Execute()
+> IPostDTO UpdatePostByID(ctx, id).IUpdatePostRequestDTO(iUpdatePostRequestDTO).Execute()
 
 
 
@@ -239,11 +241,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PostAPI.UpdatePostByID(context.Background(), id).IUpdatePostRequestDTO(iUpdatePostRequestDTO).Execute()
+	resp, r, err := apiClient.PostAPI.UpdatePostByID(context.Background(), id).IUpdatePostRequestDTO(iUpdatePostRequestDTO).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PostAPI.UpdatePostByID``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdatePostByID`: IPostDTO
+	fmt.Fprintf(os.Stdout, "Response from `PostAPI.UpdatePostByID`: %v\n", resp)
 }
 ```
 
@@ -267,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**IPostDTO**](IPostDTO.md)
 
 ### Authorization
 
@@ -276,7 +280,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

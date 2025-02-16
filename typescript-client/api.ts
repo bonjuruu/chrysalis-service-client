@@ -497,7 +497,7 @@ export const PostApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPost(iCreatePostRequestDTO: ICreatePostRequestDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createPost(iCreatePostRequestDTO: ICreatePostRequestDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IPostDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createPost(iCreatePostRequestDTO, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PostApi.createPost']?.[localVarOperationServerIndex]?.url;
@@ -534,7 +534,7 @@ export const PostApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updatePostByID(id: string, iUpdatePostRequestDTO: IUpdatePostRequestDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updatePostByID(id: string, iUpdatePostRequestDTO: IUpdatePostRequestDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IPostDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updatePostByID(id, iUpdatePostRequestDTO, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PostApi.updatePostByID']?.[localVarOperationServerIndex]?.url;
@@ -556,7 +556,7 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPost(iCreatePostRequestDTO: ICreatePostRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        createPost(iCreatePostRequestDTO: ICreatePostRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<IPostDTO> {
             return localVarFp.createPost(iCreatePostRequestDTO, options).then((request) => request(axios, basePath));
         },
         /**
@@ -584,7 +584,7 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePostByID(id: string, iUpdatePostRequestDTO: IUpdatePostRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updatePostByID(id: string, iUpdatePostRequestDTO: IUpdatePostRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<IPostDTO> {
             return localVarFp.updatePostByID(id, iUpdatePostRequestDTO, options).then((request) => request(axios, basePath));
         },
     };
@@ -840,7 +840,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createUser(iCreateUserRequestDTO: ICreateUserRequestDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createUser(iCreateUserRequestDTO: ICreateUserRequestDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IUserDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createUser(iCreateUserRequestDTO, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserApi.createUser']?.[localVarOperationServerIndex]?.url;
@@ -889,7 +889,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUsernameByID(id: string, iUpdateUsernameRequestDTO: IUpdateUsernameRequestDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateUsernameByID(id: string, iUpdateUsernameRequestDTO: IUpdateUsernameRequestDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IUserDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsernameByID(id, iUpdateUsernameRequestDTO, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserApi.updateUsernameByID']?.[localVarOperationServerIndex]?.url;
@@ -911,7 +911,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUser(iCreateUserRequestDTO: ICreateUserRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        createUser(iCreateUserRequestDTO: ICreateUserRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<IUserDTO> {
             return localVarFp.createUser(iCreateUserRequestDTO, options).then((request) => request(axios, basePath));
         },
         /**
@@ -948,7 +948,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUsernameByID(id: string, iUpdateUsernameRequestDTO: IUpdateUsernameRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateUsernameByID(id: string, iUpdateUsernameRequestDTO: IUpdateUsernameRequestDTO, options?: RawAxiosRequestConfig): AxiosPromise<IUserDTO> {
             return localVarFp.updateUsernameByID(id, iUpdateUsernameRequestDTO, options).then((request) => request(axios, basePath));
         },
     };
