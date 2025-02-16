@@ -1,0 +1,21 @@
+name: Check for File Changes
+
+on:
+  pull_request:
+
+jobs:
+  check-files:
+    name: Verify files remain unchanged
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+
+      - name: Run your specific command
+        run: |
+          make generate-openapi
+
+      - name: Check for file changes
+        run: |
+          git diff --exit-code || (echo "❌ openapi.yml has been modified. Please generate the openapi.yml file before merging." && exit 1)
