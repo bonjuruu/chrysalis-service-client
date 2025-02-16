@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **Email** | **string** | User email. | 
 **Role** | [**IUserRoleEnum**](IUserRoleEnum.md) |  | 
 **CreatedAt** | **string** | User creation date. | 
+**UpdatedAt** | **string** | User update date. | 
 
 ## Methods
 
 ### NewIUserDTO
 
-`func NewIUserDTO(id string, username string, email string, role IUserRoleEnum, createdAt string, ) *IUserDTO`
+`func NewIUserDTO(id string, username string, email string, role IUserRoleEnum, createdAt string, updatedAt string, ) *IUserDTO`
 
 NewIUserDTO instantiates a new IUserDTO object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +128,26 @@ and a boolean to check if the value has been set.
 `func (o *IUserDTO) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *IUserDTO) GetUpdatedAt() string`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *IUserDTO) GetUpdatedAtOk() (*string, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *IUserDTO) SetUpdatedAt(v string)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
 
 
 

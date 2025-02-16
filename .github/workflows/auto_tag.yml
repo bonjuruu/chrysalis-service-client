@@ -1,4 +1,4 @@
-name: Auto Tag on Merge
+name: On Merge
 
 on:
   push:
