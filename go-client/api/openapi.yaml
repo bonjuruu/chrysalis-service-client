@@ -275,6 +275,7 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         email: email
         username: username
+        updatedAt: updatedAt
       properties:
         id:
           description: User id.
@@ -292,11 +293,15 @@ components:
         createdAt:
           description: User creation date.
           type: string
+        updatedAt:
+          description: User update date.
+          type: string
       required:
       - createdAt
       - email
       - id
       - role
+      - updatedAt
       - username
       type: object
     ICreatePostRequestDTO:

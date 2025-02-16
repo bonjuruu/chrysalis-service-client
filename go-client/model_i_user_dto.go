@@ -30,6 +30,8 @@ type IUserDTO struct {
 	Role IUserRoleEnum `json:"role"`
 	// User creation date.
 	CreatedAt string `json:"createdAt"`
+	// User update date.
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _IUserDTO IUserDTO
@@ -38,13 +40,14 @@ type _IUserDTO IUserDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIUserDTO(id string, username string, email string, role IUserRoleEnum, createdAt string) *IUserDTO {
+func NewIUserDTO(id string, username string, email string, role IUserRoleEnum, createdAt string, updatedAt string) *IUserDTO {
 	this := IUserDTO{}
 	this.Id = id
 	this.Username = username
 	this.Email = email
 	this.Role = role
 	this.CreatedAt = createdAt
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -176,6 +179,30 @@ func (o *IUserDTO) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *IUserDTO) GetUpdatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *IUserDTO) GetUpdatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *IUserDTO) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
+}
+
 func (o IUserDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,6 +218,7 @@ func (o IUserDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize["email"] = o.Email
 	toSerialize["role"] = o.Role
 	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -204,6 +232,7 @@ func (o *IUserDTO) UnmarshalJSON(data []byte) (err error) {
 		"email",
 		"role",
 		"createdAt",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -214,6 +214,12 @@ export interface IUserDTO {
      * @memberof IUserDTO
      */
     'createdAt': string;
+    /**
+     * User update date.
+     * @type {string}
+     * @memberof IUserDTO
+     */
+    'updatedAt': string;
 }
 
 
