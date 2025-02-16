@@ -34,7 +34,7 @@ func (r ApiCreatePostRequest) ICreatePostRequestDTO(iCreatePostRequestDTO ICreat
 	return r
 }
 
-func (r ApiCreatePostRequest) Execute() (*http.Response, error) {
+func (r ApiCreatePostRequest) Execute() (*IPostDTO, *http.Response, error) {
 	return r.ApiService.CreatePostExecute(r)
 }
 
@@ -54,16 +54,18 @@ func (a *PostAPIService) CreatePost(ctx context.Context) ApiCreatePostRequest {
 }
 
 // Execute executes the request
-func (a *PostAPIService) CreatePostExecute(r ApiCreatePostRequest) (*http.Response, error) {
+//  @return IPostDTO
+func (a *PostAPIService) CreatePostExecute(r ApiCreatePostRequest) (*IPostDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *IPostDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PostAPIService.CreatePost")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/chrysalis/post"
@@ -72,7 +74,7 @@ func (a *PostAPIService) CreatePostExecute(r ApiCreatePostRequest) (*http.Respon
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.iCreatePostRequestDTO == nil {
-		return nil, reportError("iCreatePostRequestDTO is required and must be specified")
+		return localVarReturnValue, nil, reportError("iCreatePostRequestDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -85,7 +87,7 @@ func (a *PostAPIService) CreatePostExecute(r ApiCreatePostRequest) (*http.Respon
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -96,19 +98,19 @@ func (a *PostAPIService) CreatePostExecute(r ApiCreatePostRequest) (*http.Respon
 	localVarPostBody = r.iCreatePostRequestDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -116,10 +118,19 @@ func (a *PostAPIService) CreatePostExecute(r ApiCreatePostRequest) (*http.Respon
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDeletePostByIDRequest struct {
@@ -329,7 +340,7 @@ func (r ApiUpdatePostByIDRequest) IUpdatePostRequestDTO(iUpdatePostRequestDTO IU
 	return r
 }
 
-func (r ApiUpdatePostByIDRequest) Execute() (*http.Response, error) {
+func (r ApiUpdatePostByIDRequest) Execute() (*IPostDTO, *http.Response, error) {
 	return r.ApiService.UpdatePostByIDExecute(r)
 }
 
@@ -351,16 +362,18 @@ func (a *PostAPIService) UpdatePostByID(ctx context.Context, id string) ApiUpdat
 }
 
 // Execute executes the request
-func (a *PostAPIService) UpdatePostByIDExecute(r ApiUpdatePostByIDRequest) (*http.Response, error) {
+//  @return IPostDTO
+func (a *PostAPIService) UpdatePostByIDExecute(r ApiUpdatePostByIDRequest) (*IPostDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *IPostDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PostAPIService.UpdatePostByID")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/chrysalis/post/{id}"
@@ -370,7 +383,7 @@ func (a *PostAPIService) UpdatePostByIDExecute(r ApiUpdatePostByIDRequest) (*htt
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.iUpdatePostRequestDTO == nil {
-		return nil, reportError("iUpdatePostRequestDTO is required and must be specified")
+		return localVarReturnValue, nil, reportError("iUpdatePostRequestDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -383,7 +396,7 @@ func (a *PostAPIService) UpdatePostByIDExecute(r ApiUpdatePostByIDRequest) (*htt
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -394,19 +407,19 @@ func (a *PostAPIService) UpdatePostByIDExecute(r ApiUpdatePostByIDRequest) (*htt
 	localVarPostBody = r.iUpdatePostRequestDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -414,8 +427,17 @@ func (a *PostAPIService) UpdatePostByIDExecute(r ApiUpdatePostByIDRequest) (*htt
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

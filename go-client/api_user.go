@@ -34,7 +34,7 @@ func (r ApiCreateUserRequest) ICreateUserRequestDTO(iCreateUserRequestDTO ICreat
 	return r
 }
 
-func (r ApiCreateUserRequest) Execute() (*http.Response, error) {
+func (r ApiCreateUserRequest) Execute() (*IUserDTO, *http.Response, error) {
 	return r.ApiService.CreateUserExecute(r)
 }
 
@@ -54,16 +54,18 @@ func (a *UserAPIService) CreateUser(ctx context.Context) ApiCreateUserRequest {
 }
 
 // Execute executes the request
-func (a *UserAPIService) CreateUserExecute(r ApiCreateUserRequest) (*http.Response, error) {
+//  @return IUserDTO
+func (a *UserAPIService) CreateUserExecute(r ApiCreateUserRequest) (*IUserDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *IUserDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.CreateUser")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/chrysalis/user"
@@ -72,7 +74,7 @@ func (a *UserAPIService) CreateUserExecute(r ApiCreateUserRequest) (*http.Respon
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.iCreateUserRequestDTO == nil {
-		return nil, reportError("iCreateUserRequestDTO is required and must be specified")
+		return localVarReturnValue, nil, reportError("iCreateUserRequestDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -85,7 +87,7 @@ func (a *UserAPIService) CreateUserExecute(r ApiCreateUserRequest) (*http.Respon
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -96,19 +98,19 @@ func (a *UserAPIService) CreateUserExecute(r ApiCreateUserRequest) (*http.Respon
 	localVarPostBody = r.iCreateUserRequestDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -116,10 +118,19 @@ func (a *UserAPIService) CreateUserExecute(r ApiCreateUserRequest) (*http.Respon
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDeleteUserByIDRequest struct {
@@ -432,7 +443,7 @@ func (r ApiUpdateUsernameByIDRequest) IUpdateUsernameRequestDTO(iUpdateUsernameR
 	return r
 }
 
-func (r ApiUpdateUsernameByIDRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateUsernameByIDRequest) Execute() (*IUserDTO, *http.Response, error) {
 	return r.ApiService.UpdateUsernameByIDExecute(r)
 }
 
@@ -454,16 +465,18 @@ func (a *UserAPIService) UpdateUsernameByID(ctx context.Context, id string) ApiU
 }
 
 // Execute executes the request
-func (a *UserAPIService) UpdateUsernameByIDExecute(r ApiUpdateUsernameByIDRequest) (*http.Response, error) {
+//  @return IUserDTO
+func (a *UserAPIService) UpdateUsernameByIDExecute(r ApiUpdateUsernameByIDRequest) (*IUserDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *IUserDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.UpdateUsernameByID")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/chrysalis/user/{id}/username"
@@ -473,7 +486,7 @@ func (a *UserAPIService) UpdateUsernameByIDExecute(r ApiUpdateUsernameByIDReques
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.iUpdateUsernameRequestDTO == nil {
-		return nil, reportError("iUpdateUsernameRequestDTO is required and must be specified")
+		return localVarReturnValue, nil, reportError("iUpdateUsernameRequestDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -486,7 +499,7 @@ func (a *UserAPIService) UpdateUsernameByIDExecute(r ApiUpdateUsernameByIDReques
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -497,19 +510,19 @@ func (a *UserAPIService) UpdateUsernameByIDExecute(r ApiUpdateUsernameByIDReques
 	localVarPostBody = r.iUpdateUsernameRequestDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -517,8 +530,17 @@ func (a *UserAPIService) UpdateUsernameByIDExecute(r ApiUpdateUsernameByIDReques
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

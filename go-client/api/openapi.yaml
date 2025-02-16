@@ -28,9 +28,15 @@ paths:
         required: true
       responses:
         "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPostDTO'
           description: Post created.
         "400":
           description: Invalid request.
+        "409":
+          description: Post already exists.
       tags:
       - post
   /chrysalis/post/{id}:
@@ -96,6 +102,10 @@ paths:
         required: true
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPostDTO'
           description: Post updated.
         "400":
           description: Invalid request.
@@ -115,9 +125,15 @@ paths:
         required: true
       responses:
         "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IUserDTO'
           description: User created.
         "400":
           description: Invalid request.
+        "409":
+          description: User already exists.
       tags:
       - user
   /chrysalis/user/{id}:
@@ -184,6 +200,10 @@ paths:
         required: true
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IUserDTO'
           description: User updated.
         "400":
           description: Invalid request.
