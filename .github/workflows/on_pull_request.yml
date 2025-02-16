@@ -5,12 +5,22 @@ on:
 
 jobs:
   check-files:
-    name: Verify files remain unchanged
+    name: Verify files are generated
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout PR branch
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install OpenAPI Generator CLI
+        run: |
+          npm install -g @openapitools/openapi-generator-cli
+          openapi-generator-cli version  # Verify installation
 
       - name: Run your specific command
         run: |
