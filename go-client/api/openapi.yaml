@@ -373,11 +373,6 @@ components:
         thumbnail:
           description: URL of the post thumbnail.
           type: string
-      required:
-      - content
-      - summary
-      - thumbnail
-      - title
       type: object
     ICreateUserRequestDTO:
       example:

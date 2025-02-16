@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Title** | **string** | Title of the post. | 
-**Summary** | **string** | Summary of the post. | 
-**Content** | **string** | Content of the post. | 
-**Thumbnail** | **string** | URL of the post thumbnail. | 
+**Title** | Pointer to **string** | Title of the post. | [optional] 
+**Summary** | Pointer to **string** | Summary of the post. | [optional] 
+**Content** | Pointer to **string** | Content of the post. | [optional] 
+**Thumbnail** | Pointer to **string** | URL of the post thumbnail. | [optional] 
 
 ## Methods
 
 ### NewIUpdatePostRequestDTO
 
-`func NewIUpdatePostRequestDTO(title string, summary string, content string, thumbnail string, ) *IUpdatePostRequestDTO`
+`func NewIUpdatePostRequestDTO() *IUpdatePostRequestDTO`
 
 NewIUpdatePostRequestDTO instantiates a new IUpdatePostRequestDTO object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,11 @@ and a boolean to check if the value has been set.
 
 SetTitle sets Title field to given value.
 
+### HasTitle
+
+`func (o *IUpdatePostRequestDTO) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
 
 ### GetSummary
 
@@ -67,6 +72,11 @@ and a boolean to check if the value has been set.
 
 SetSummary sets Summary field to given value.
 
+### HasSummary
+
+`func (o *IUpdatePostRequestDTO) HasSummary() bool`
+
+HasSummary returns a boolean if a field has been set.
 
 ### GetContent
 
@@ -87,6 +97,11 @@ and a boolean to check if the value has been set.
 
 SetContent sets Content field to given value.
 
+### HasContent
+
+`func (o *IUpdatePostRequestDTO) HasContent() bool`
+
+HasContent returns a boolean if a field has been set.
 
 ### GetThumbnail
 
@@ -107,6 +122,11 @@ and a boolean to check if the value has been set.
 
 SetThumbnail sets Thumbnail field to given value.
 
+### HasThumbnail
+
+`func (o *IUpdatePostRequestDTO) HasThumbnail() bool`
+
+HasThumbnail returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

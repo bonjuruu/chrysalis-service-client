@@ -12,8 +12,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the IUpdatePostRequestDTO type satisfies the MappedNullable interface at compile time
@@ -22,27 +20,21 @@ var _ MappedNullable = &IUpdatePostRequestDTO{}
 // IUpdatePostRequestDTO struct for IUpdatePostRequestDTO
 type IUpdatePostRequestDTO struct {
 	// Title of the post.
-	Title string `json:"title"`
+	Title *string `json:"title,omitempty"`
 	// Summary of the post.
-	Summary string `json:"summary"`
+	Summary *string `json:"summary,omitempty"`
 	// Content of the post.
-	Content string `json:"content"`
+	Content *string `json:"content,omitempty"`
 	// URL of the post thumbnail.
-	Thumbnail string `json:"thumbnail"`
+	Thumbnail *string `json:"thumbnail,omitempty"`
 }
-
-type _IUpdatePostRequestDTO IUpdatePostRequestDTO
 
 // NewIUpdatePostRequestDTO instantiates a new IUpdatePostRequestDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIUpdatePostRequestDTO(title string, summary string, content string, thumbnail string) *IUpdatePostRequestDTO {
+func NewIUpdatePostRequestDTO() *IUpdatePostRequestDTO {
 	this := IUpdatePostRequestDTO{}
-	this.Title = title
-	this.Summary = summary
-	this.Content = content
-	this.Thumbnail = thumbnail
 	return &this
 }
 
@@ -54,100 +46,132 @@ func NewIUpdatePostRequestDTOWithDefaults() *IUpdatePostRequestDTO {
 	return &this
 }
 
-// GetTitle returns the Title field value
+// GetTitle returns the Title field value if set, zero value otherwise.
 func (o *IUpdatePostRequestDTO) GetTitle() string {
-	if o == nil {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
-
-	return o.Title
+	return *o.Title
 }
 
-// GetTitleOk returns a tuple with the Title field value
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IUpdatePostRequestDTO) GetTitleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
-	return &o.Title, true
+	return o.Title, true
 }
 
-// SetTitle sets field value
+// HasTitle returns a boolean if a field has been set.
+func (o *IUpdatePostRequestDTO) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
 func (o *IUpdatePostRequestDTO) SetTitle(v string) {
-	o.Title = v
+	o.Title = &v
 }
 
-// GetSummary returns the Summary field value
+// GetSummary returns the Summary field value if set, zero value otherwise.
 func (o *IUpdatePostRequestDTO) GetSummary() string {
-	if o == nil {
+	if o == nil || IsNil(o.Summary) {
 		var ret string
 		return ret
 	}
-
-	return o.Summary
+	return *o.Summary
 }
 
-// GetSummaryOk returns a tuple with the Summary field value
+// GetSummaryOk returns a tuple with the Summary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IUpdatePostRequestDTO) GetSummaryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Summary) {
 		return nil, false
 	}
-	return &o.Summary, true
+	return o.Summary, true
 }
 
-// SetSummary sets field value
+// HasSummary returns a boolean if a field has been set.
+func (o *IUpdatePostRequestDTO) HasSummary() bool {
+	if o != nil && !IsNil(o.Summary) {
+		return true
+	}
+
+	return false
+}
+
+// SetSummary gets a reference to the given string and assigns it to the Summary field.
 func (o *IUpdatePostRequestDTO) SetSummary(v string) {
-	o.Summary = v
+	o.Summary = &v
 }
 
-// GetContent returns the Content field value
+// GetContent returns the Content field value if set, zero value otherwise.
 func (o *IUpdatePostRequestDTO) GetContent() string {
-	if o == nil {
+	if o == nil || IsNil(o.Content) {
 		var ret string
 		return ret
 	}
-
-	return o.Content
+	return *o.Content
 }
 
-// GetContentOk returns a tuple with the Content field value
+// GetContentOk returns a tuple with the Content field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IUpdatePostRequestDTO) GetContentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Content) {
 		return nil, false
 	}
-	return &o.Content, true
+	return o.Content, true
 }
 
-// SetContent sets field value
+// HasContent returns a boolean if a field has been set.
+func (o *IUpdatePostRequestDTO) HasContent() bool {
+	if o != nil && !IsNil(o.Content) {
+		return true
+	}
+
+	return false
+}
+
+// SetContent gets a reference to the given string and assigns it to the Content field.
 func (o *IUpdatePostRequestDTO) SetContent(v string) {
-	o.Content = v
+	o.Content = &v
 }
 
-// GetThumbnail returns the Thumbnail field value
+// GetThumbnail returns the Thumbnail field value if set, zero value otherwise.
 func (o *IUpdatePostRequestDTO) GetThumbnail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Thumbnail) {
 		var ret string
 		return ret
 	}
-
-	return o.Thumbnail
+	return *o.Thumbnail
 }
 
-// GetThumbnailOk returns a tuple with the Thumbnail field value
+// GetThumbnailOk returns a tuple with the Thumbnail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IUpdatePostRequestDTO) GetThumbnailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Thumbnail) {
 		return nil, false
 	}
-	return &o.Thumbnail, true
+	return o.Thumbnail, true
 }
 
-// SetThumbnail sets field value
+// HasThumbnail returns a boolean if a field has been set.
+func (o *IUpdatePostRequestDTO) HasThumbnail() bool {
+	if o != nil && !IsNil(o.Thumbnail) {
+		return true
+	}
+
+	return false
+}
+
+// SetThumbnail gets a reference to the given string and assigns it to the Thumbnail field.
 func (o *IUpdatePostRequestDTO) SetThumbnail(v string) {
-	o.Thumbnail = v
+	o.Thumbnail = &v
 }
 
 func (o IUpdatePostRequestDTO) MarshalJSON() ([]byte, error) {
@@ -160,51 +184,19 @@ func (o IUpdatePostRequestDTO) MarshalJSON() ([]byte, error) {
 
 func (o IUpdatePostRequestDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["title"] = o.Title
-	toSerialize["summary"] = o.Summary
-	toSerialize["content"] = o.Content
-	toSerialize["thumbnail"] = o.Thumbnail
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.Summary) {
+		toSerialize["summary"] = o.Summary
+	}
+	if !IsNil(o.Content) {
+		toSerialize["content"] = o.Content
+	}
+	if !IsNil(o.Thumbnail) {
+		toSerialize["thumbnail"] = o.Thumbnail
+	}
 	return toSerialize, nil
-}
-
-func (o *IUpdatePostRequestDTO) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"title",
-		"summary",
-		"content",
-		"thumbnail",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIUpdatePostRequestDTO := _IUpdatePostRequestDTO{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varIUpdatePostRequestDTO)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IUpdatePostRequestDTO(varIUpdatePostRequestDTO)
-
-	return err
 }
 
 type NullableIUpdatePostRequestDTO struct {

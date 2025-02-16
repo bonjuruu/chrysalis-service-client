@@ -314,7 +314,6 @@ components:
           description: URL of the post thumbnail.
     IUpdatePostRequestDTO:
       type: object
-      required: [title, summary, content, thumbnail]
       properties:
         title:
           type: string
