@@ -145,25 +145,25 @@ export interface IUpdatePostRequestDTO {
      * @type {string}
      * @memberof IUpdatePostRequestDTO
      */
-    'title': string;
+    'title'?: string;
     /**
      * Summary of the post.
      * @type {string}
      * @memberof IUpdatePostRequestDTO
      */
-    'summary': string;
+    'summary'?: string;
     /**
      * Content of the post.
      * @type {string}
      * @memberof IUpdatePostRequestDTO
      */
-    'content': string;
+    'content'?: string;
     /**
      * URL of the post thumbnail.
      * @type {string}
      * @memberof IUpdatePostRequestDTO
      */
-    'thumbnail': string;
+    'thumbnail'?: string;
 }
 /**
  * 
